@@ -24,8 +24,13 @@ enum Mock {
     static let infoViewFontSize: CGFloat = 14
     static let buttonMinimumHeight: CGFloat = 55
     static let actionButtonToWidthMultiplier: CGFloat = 0.43
-    static let dataSourcePrice: InfoViewDataSource = .init(labelText: "Стоимость", rows: [("Открытие", "100Р"), ("Минимум", "90Р"), ("Тикер", "AMCO")])
-    static let dataSourceAccount: InfoViewDataSource = .init(labelText: "Портфель", rows: [("Количество", "100"), ("Общая стоимость", "9000Р"), ("Дельта", "-1000Р (-10%)")])
+    static let dataSourcePrice: InfoViewDataSource =
+        .init(labelText: "Стоимость", rows: [("Открытие", "100Р"), ("Минимум", "90Р"), ("Тикер", "AMCO")])
+    static let dataSourceAccount: InfoViewDataSource =
+        .init(
+            labelText: "Портфель",
+            rows: [("Количество", "100"), ("Общая стоимость", "9000Р"), ("Дельта", "-1000Р (-10%)")]
+        )
     static let sellButtonTitle: String = "Продать"
     static let buyButtonTitle: String = "Купить"
     static let buttonTitleTextFontSize: CGFloat = 16
@@ -125,7 +130,6 @@ extension ViewController {
             changePriceLabel.leadingAnchor.constraint(equalTo: currentPriceLabel.leadingAnchor),
             changePriceLabel.topAnchor.constraint(equalTo: currentPriceLabel.bottomAnchor, constant: Mock.miniPadding)
         ])
-        
     }
     
     private func configureTempChart() {
@@ -143,11 +147,15 @@ extension ViewController {
     
     private func configurePeriodsSegmentedControl() {
         periodsSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        Mock.periodsSegmentedControlItems.enumerated().forEach( { periodsSegmentedControl.insertSegment(withTitle: $0.element, at: $0.offset, animated: true) })
+        Mock.periodsSegmentedControlItems.enumerated().forEach {
+            periodsSegmentedControl.insertSegment(withTitle: $0.element, at: $0.offset, animated: true)
+        }
         
         NSLayoutConstraint.activate([
             periodsSegmentedControl.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: Mock.padding),
-            periodsSegmentedControl.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -Mock.padding),
+            periodsSegmentedControl.trailingAnchor.constraint(
+                equalTo: headerView.trailingAnchor, constant: -Mock.padding
+            ),
             periodsSegmentedControl.topAnchor.constraint(equalTo: tempChart.bottomAnchor, constant: Mock.padding),
             periodsSegmentedControl.heightAnchor.constraint(equalToConstant: Mock.periodsSegmentedControlHeight),
             periodsSegmentedControl.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -Mock.padding)
@@ -174,7 +182,9 @@ extension ViewController {
             sellButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: Mock.padding),
             sellButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: Mock.padding),
             sellButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -Mock.padding),
-            sellButton.widthAnchor.constraint(equalTo: footerView.widthAnchor, multiplier: Mock.actionButtonToWidthMultiplier)
+            sellButton.widthAnchor.constraint(
+                equalTo: footerView.widthAnchor, multiplier: Mock.actionButtonToWidthMultiplier
+            )
         ])
         
         sellButton.backgroundColor = .systemRed
