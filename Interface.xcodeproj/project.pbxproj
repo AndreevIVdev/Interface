@@ -11,6 +11,8 @@
 		8B8AFBDA27BC0A71001F0427 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AFBD927BC0A71001F0427 /* ViewController.swift */; };
 		8B8AFBDF27BC0A72001F0427 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B8AFBDE27BC0A72001F0427 /* Assets.xcassets */; };
 		8B8AFBE227BC0A72001F0427 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B8AFBE027BC0A72001F0427 /* LaunchScreen.storyboard */; };
+		DF57ABF027C6C122008709AB /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57ABEF27C6C122008709AB /* LineChart.swift */; };
+		DF57ABF227C6C145008709AB /* PointEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57ABF127C6C145008709AB /* PointEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		8B8AFBDE27BC0A72001F0427 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B8AFBE127BC0A72001F0427 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B8AFBE327BC0A72001F0427 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF57ABEF27C6C122008709AB /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		DF57ABF127C6C145008709AB /* PointEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 		8B8AFBD427BC0A71001F0427 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				DF57ABEE27C6C0BA008709AB /* ChartView */,
 				8B8AFBD527BC0A71001F0427 /* AppDelegate.swift */,
 				8B8AFBD927BC0A71001F0427 /* ViewController.swift */,
 				8B8AFBDE27BC0A72001F0427 /* Assets.xcassets */,
@@ -59,6 +64,15 @@
 				8B8AFBE327BC0A72001F0427 /* Info.plist */,
 			);
 			path = Interface;
+			sourceTree = "<group>";
+		};
+		DF57ABEE27C6C0BA008709AB /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				DF57ABEF27C6C122008709AB /* LineChart.swift */,
+				DF57ABF127C6C145008709AB /* PointEntry.swift */,
+			);
+			path = ChartView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +168,8 @@
 			files = (
 				8B8AFBDA27BC0A71001F0427 /* ViewController.swift in Sources */,
 				8B8AFBD627BC0A71001F0427 /* AppDelegate.swift in Sources */,
+				DF57ABF027C6C122008709AB /* LineChart.swift in Sources */,
+				DF57ABF227C6C145008709AB /* PointEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
