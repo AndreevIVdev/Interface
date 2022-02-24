@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct PointEntry {
+struct ChartCandle {
     let value: Int
     let label: String
 }
 
-extension PointEntry: Comparable {
-    static func < (lhs: PointEntry, rhs: PointEntry) -> Bool {
+extension ChartCandle: Comparable {
+    static func < (lhs: ChartCandle, rhs: ChartCandle) -> Bool {
         return lhs.value < rhs.value
     }
-    static func == (lhs: PointEntry, rhs: PointEntry) -> Bool {
+    static func == (lhs: ChartCandle, rhs: ChartCandle) -> Bool {
         return lhs.value == rhs.value
     }
 }

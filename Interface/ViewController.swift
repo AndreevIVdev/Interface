@@ -16,7 +16,6 @@ enum Mock {
     static let currentPriceLabelFontSize: CGFloat = 20
     static let changePriceLabelText = "+18.01 $ (8.3%)"
     static let changePriceLabelFontSize: CGFloat = 14
-    static let chartImage = UIImage(systemName: "chart.xyaxis.line")!
     static let chartImageHeight: CGFloat = 340
     static let periodsSegmentedControlItems: [String] = ["Д", "Н", "М", "6М", "1Г", "Всё"]
     static let periodsSegmentedControlHeight: CGFloat = 30
@@ -46,8 +45,8 @@ class ViewController: UIViewController {
     private let footerView: UIView = .init()
     private let currentPriceLabel: UILabel = .init()
     private let changePriceLabel: UILabel = .init()
-    private let tempChart: UIImageView = .init()
-    private let periodsSegmentedControl: UISegmentedControl = .init()
+    private let chartView: ChartView = .init()
+    private let timeframeSegmentedControl: UISegmentedControl = .init()
     private let infoTableView: UITableView = .init(frame: .zero, style: .insetGrouped)
     private let buyButton: UIButton = .init()
     private let sellButton: UIButton = .init()
@@ -62,7 +61,7 @@ class ViewController: UIViewController {
         configureHeaderView()
         configureCurrentPriceLabel()
         configureChangePriceLabel()
-        configureTempChart()
+        configureChartView()
         configurePeriodsSegmentedControl()
         configureTableHeaderView()
         
@@ -74,6 +73,8 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        chartView.dataSource = MockDataSource().generateRandomEntries()
         
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -105,7 +106,7 @@ extension ViewController {
 extension ViewController {
     
     private func configureHeaderView() {
-        headerView.addSubViews(currentPriceLabel, changePriceLabel, tempChart, periodsSegmentedControl)
+        headerView.addSubViews(currentPriceLabel, changePriceLabel, chartView, timeframeSegmentedControl)
     }
     
     private func configureCurrentPriceLabel() {
@@ -132,33 +133,35 @@ extension ViewController {
         ])
     }
     
-    private func configureTempChart() {
-        tempChart.translatesAutoresizingMaskIntoConstraints = false
-        tempChart.image = Mock.chartImage
-        tempChart.tintColor = .white
-        tempChart.contentMode = .scaleAspectFill
+    private func configureChartView() {
+        chartView.translatesAutoresizingMaskIntoConstraints = false
+        chartView.tintColor = .white
+        chartView.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
-            tempChart.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            tempChart.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-            tempChart.topAnchor.constraint(equalTo: changePriceLabel.bottomAnchor, constant: Mock.padding),
-            tempChart.heightAnchor.constraint(equalToConstant: Mock.chartImageHeight)
+            chartView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            chartView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            chartView.topAnchor.constraint(equalTo: changePriceLabel.bottomAnchor, constant: Mock.padding),
+            chartView.heightAnchor.constraint(equalToConstant: Mock.chartImageHeight)
         ])
     }
     
     private func configurePeriodsSegmentedControl() {
-        periodsSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        timeframeSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         Mock.periodsSegmentedControlItems.enumerated().forEach {
-            periodsSegmentedControl.insertSegment(withTitle: $0.element, at: $0.offset, animated: true)
+            timeframeSegmentedControl.insertSegment(withTitle: $0.element, at: $0.offset, animated: true)
         }
         
         NSLayoutConstraint.activate([
-            periodsSegmentedControl.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: Mock.padding),
-            periodsSegmentedControl.trailingAnchor.constraint(
+            timeframeSegmentedControl.leadingAnchor.constraint(
+                equalTo: headerView.leadingAnchor,
+                constant: Mock.padding
+            ),
+            timeframeSegmentedControl.trailingAnchor.constraint(
                 equalTo: headerView.trailingAnchor, constant: -Mock.padding
             ),
-            periodsSegmentedControl.topAnchor.constraint(equalTo: tempChart.bottomAnchor, constant: Mock.padding),
-            periodsSegmentedControl.heightAnchor.constraint(equalToConstant: Mock.periodsSegmentedControlHeight),
-            periodsSegmentedControl.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -Mock.padding)
+            timeframeSegmentedControl.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: Mock.padding),
+            timeframeSegmentedControl.heightAnchor.constraint(equalToConstant: Mock.periodsSegmentedControlHeight),
+            timeframeSegmentedControl.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -Mock.padding)
         ])
     }
     
