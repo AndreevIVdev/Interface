@@ -11,6 +11,9 @@
 		8B8AFBDA27BC0A71001F0427 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AFBD927BC0A71001F0427 /* ViewController.swift */; };
 		8B8AFBDF27BC0A72001F0427 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B8AFBDE27BC0A72001F0427 /* Assets.xcassets */; };
 		8B8AFBE227BC0A72001F0427 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B8AFBE027BC0A72001F0427 /* LaunchScreen.storyboard */; };
+		DF57ABF027C6C122008709AB /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57ABEF27C6C122008709AB /* ChartView.swift */; };
+		DF57ABF227C6C145008709AB /* ChartCandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57ABF127C6C145008709AB /* ChartCandle.swift */; };
+		DF84935C27C7F84900FAD33B /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF84935B27C7F84900FAD33B /* MockDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		8B8AFBDE27BC0A72001F0427 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B8AFBE127BC0A72001F0427 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B8AFBE327BC0A72001F0427 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF57ABEF27C6C122008709AB /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		DF57ABF127C6C145008709AB /* ChartCandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCandle.swift; sourceTree = "<group>"; };
+		DF84935B27C7F84900FAD33B /* MockDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,7 @@
 		8B8AFBD427BC0A71001F0427 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				DF57ABEE27C6C0BA008709AB /* ChartView */,
 				8B8AFBD527BC0A71001F0427 /* AppDelegate.swift */,
 				8B8AFBD927BC0A71001F0427 /* ViewController.swift */,
 				8B8AFBDE27BC0A72001F0427 /* Assets.xcassets */,
@@ -59,6 +66,16 @@
 				8B8AFBE327BC0A72001F0427 /* Info.plist */,
 			);
 			path = Interface;
+			sourceTree = "<group>";
+		};
+		DF57ABEE27C6C0BA008709AB /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				DF57ABEF27C6C122008709AB /* ChartView.swift */,
+				DF57ABF127C6C145008709AB /* ChartCandle.swift */,
+				DF84935B27C7F84900FAD33B /* MockDataSource.swift */,
+			);
+			path = ChartView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +88,7 @@
 				8B8AFBCE27BC0A71001F0427 /* Sources */,
 				8B8AFBCF27BC0A71001F0427 /* Frameworks */,
 				8B8AFBD027BC0A71001F0427 /* Resources */,
+				8B43EFB627C6BD4200B5018F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -126,13 +144,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8B43EFB627C6BD4200B5018F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n if which swiftlint >/dev/null; then\n    swiftlint\n else\n    echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n exit 1\n fi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8B8AFBCE27BC0A71001F0427 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8B8AFBDA27BC0A71001F0427 /* ViewController.swift in Sources */,
+				DF84935C27C7F84900FAD33B /* MockDataSource.swift in Sources */,
 				8B8AFBD627BC0A71001F0427 /* AppDelegate.swift in Sources */,
+				DF57ABF027C6C122008709AB /* ChartView.swift in Sources */,
+				DF57ABF227C6C145008709AB /* ChartCandle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
